@@ -65,6 +65,10 @@ functions:
       - http:
           path: users/create
           method: get
+          integration: lambda
+          request:
+            template:
+              application/json: '{ "data" : "$input.params(''body'')" }'
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
